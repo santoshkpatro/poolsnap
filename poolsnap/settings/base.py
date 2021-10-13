@@ -17,8 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'poolsnap.apps.PoolsnapConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -29,6 +29,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'poolsnap.middlewares.AdminProtectMiddleware',
 ]
 
 ROOT_URLCONF = 'poolsnap.urls'

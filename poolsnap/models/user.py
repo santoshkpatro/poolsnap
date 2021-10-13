@@ -7,12 +7,9 @@ class UserManager(BaseUserManager):
     def create_user(self, email, first_name, password=None, **extra_fields):
         if email is None:
             raise ValueError("Email must be provided!")
-
         if first_name is None:
             raise ValueError("First name must be provided")
-
         email = self.normalize_email(email)
-
         user = self.model(email=email, first_name=first_name, **extra_fields)
         if password is not None:
             user.set_password(password)
@@ -36,7 +33,7 @@ class User(AbstractBaseUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     avatar = models.URLField(blank=True, null=True)
-    password_reset_required = models.BooleanField(default=False)
+    password_reset = models.BooleanField(default=False)
     date_joined = models.DateTimeField('date joined', default=timezone.now)
     last_update = models.DateTimeField(auto_now=True)
 

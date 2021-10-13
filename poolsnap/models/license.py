@@ -10,7 +10,7 @@ class ValidLicenseManager(models.Manager):
 
 
 class License(models.Model):
-    license_id = models.CharField(max_length=12)
+    license_id = models.CharField(max_length=12, blank=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_licenses')
     item = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True, related_name='item_licenses')
     is_valid = models.BooleanField(default=True)
@@ -18,7 +18,8 @@ class License(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    valid_licenses = ValidLicenseManager()
+    objects = models.Manager()
+    valid_objects = ValidLicenseManager()
 
     class Meta:
         db_table = 'licenses'

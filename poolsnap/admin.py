@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from django.contrib import admin
-from poolsnap.models import User
+from poolsnap.models import User, Category, Resource, License, Order, Item
 
 
 class UserCreationForm(forms.ModelForm):
@@ -68,3 +68,34 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'created_at']
+
+
+class ResourceInline(admin.TabularInline):
+    model = Resource
+    extra = 0
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ['title', 'category', 'price', 'discount', 'is_available', 'created_at']
+    list_editable = ['category', 'price', 'discount', 'is_available']
+    list_filter = ['category']
+
+    inlines = [ResourceInline]
+
+
+@admin.register(License)
+class LicenseAdmin(admin.ModelAdmin):
+    list_display = ['license_id', 'user', 'item', 'is_valid', 'created_at']
+    list_editable = ['is_valid']
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['order_id', 'user', 'item', 'discount', 'amount', 'status', 'created_at']
+    list_editable = ['status']

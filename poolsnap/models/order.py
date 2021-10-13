@@ -12,7 +12,7 @@ class Order(models.Model):
         ('DISCARDED', 'DISCARDED')
     )
 
-    order_id = models.CharField(max_length=12)
+    order_id = models.CharField(max_length=12, blank=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     item = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)

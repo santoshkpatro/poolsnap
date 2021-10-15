@@ -23,6 +23,7 @@ class License(models.Model):
 
     class Meta:
         db_table = 'licenses'
+        unique_together = ['user', 'item']
 
     def __str__(self) -> str:
         return self.license_id

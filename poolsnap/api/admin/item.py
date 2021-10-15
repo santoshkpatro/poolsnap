@@ -13,16 +13,20 @@ class CategorySerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
     category = CategorySerializer(read_only=True)
+    licenses_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Item
         fields = ['id', 'category', 'title', 'slug', 'description', 'price',
-                  'discount', 'is_available', 'created_at', 'category_id', 'resource_url']
+                  'discount', 'is_available', 'created_at', 'category_id', 'resource_url', 'licenses_count']
+
+    def get_licenses_count(self, obj):
+        return obj.item_licenses.all().count()
 
     def create(self, validated_data):
         category_id = validated_data.pop('category_id')
         item = Item(**validated_data)
-        if 'category_id' is not None:
+        if 'category_id' != None:
             try:
                 category = Category.objects.get(id=category_id)
                 item.category = category

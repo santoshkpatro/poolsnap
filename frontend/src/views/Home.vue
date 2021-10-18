@@ -1,7 +1,5 @@
 <template>
-    <div class="container">
-        <b-button type="is-primary">Primary</b-button>
-    </div>
+    <div class="home"></div>
 </template>
 
 <script>

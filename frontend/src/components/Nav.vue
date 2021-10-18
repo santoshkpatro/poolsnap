@@ -2,10 +2,7 @@
     <b-navbar id="nav">
         <template #brand>
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                <img
-                    src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                    alt="Lightweight UI components for Vue.js based on Bulma"
-                />
+                <p>Poolsnap</p>
             </b-navbar-item>
         </template>
         <template #start> </template>
@@ -24,7 +21,4 @@
 </template>
 
 <style scoped>
-#nav {
-    border-bottom: dashed 2px;
-}
 </style>

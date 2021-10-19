@@ -20,39 +20,6 @@ const routes = [
         name: 'Login',
         component: () => import('../views/auth/Login.vue'),
     },
-    {
-        path: '/auth/register',
-        name: 'Register',
-        component: () => import('../views/auth/Register.vue'),
-    },
-    {
-        path: '/other',
-        name: 'Other',
-        meta: { requiresAuth: true },
-        component: () => import('../views/Other.vue'),
-    },
-    {
-        path: '/admin',
-        name: 'Overview',
-        meta: { requiresAuth: true, requiresAdmin: true },
-        component: () => import('../views/admin/Overview.vue'),
-    },
-    {
-        path: '/admin/users',
-        name: 'Users',
-        meta: { requiresAuth: true, requiresAdmin: true },
-        component: () => import('../views/admin/Users.vue'),
-    },
-    {
-        path: '/unauthorized',
-        name: 'Unauthorized',
-        component: () => import('../views/Unauthorized.vue'),
-    },
-    {
-        path: '/:catchAll(.*)',
-        name: 'NotFound',
-        component: () => import('../views/NotFound.vue'),
-    },
 ]
 
 const router = new VueRouter({

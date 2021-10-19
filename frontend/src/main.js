@@ -2,44 +2,18 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from 'axios'
-import Buefy from 'buefy'
+import vuetify from './plugins/vuetify'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import { extend } from 'vee-validate'
 import { required, email } from 'vee-validate/dist/rules'
-import 'buefy/dist/buefy.css'
+import axios from 'axios'
 
-Vue.use(Buefy)
 Vue.config.productionTip = false
-Vue.mixin({
-    methods: {
-        raiseNotification(msg, type) {
-            switch (type) {
-                case 'success':
-                    this.$buefy.notification.open({
-                        type: 'is-success',
-                        message: msg,
-                    })
-                    break
-
-                case 'error':
-                    this.$buefy.notification.open({
-                        type: 'is-danger',
-                        message: msg,
-                    })
-                    break
-
-                default:
-                    this.$buefy.notification.open(msg)
-                    break
-            }
-        },
-    },
-})
 
 new Vue({
     router,
     store,
+    vuetify,
     render: h => h(App),
     created() {
         const userString = localStorage.getItem('user')

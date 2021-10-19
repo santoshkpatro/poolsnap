@@ -5,7 +5,7 @@
                 <Sidebar />
             </div>
             <div class="column">
-                <h1 class="title">Overview</h1>
+                <h1 class="title">Users</h1>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
 import Sidebar from '@/components/Sidebar.vue'
 
 export default {
-    name: 'Overview',
+    name: 'Users',
     components: {
         Sidebar,
     },

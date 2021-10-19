@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Register</h1>
+        <h1 class="title">Page not 404</h1>
     </div>
 </template>
 

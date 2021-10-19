@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Register</h1>
+        <h1 class="title">Unauthorized Access</h1>
     </div>
 </template>
 

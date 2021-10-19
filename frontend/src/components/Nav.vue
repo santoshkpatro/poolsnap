@@ -10,15 +10,54 @@
         <template #end>
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <router-link
+                        class="button is-primary"
+                        v-if="!loggedIn"
+                        :to="{ name: 'Register' }"
+                    >
                         <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light"> Log in </a>
+                    </router-link>
+                    <router-link
+                        class="button is-light"
+                        v-if="!loggedIn"
+                        :to="{ name: 'Login' }"
+                    >
+                        Log in
+                    </router-link>
+                    <router-link
+                        :to="{ name: 'Overview' }"
+                        class="button is-light"
+                        v-if="isAdmin"
+                        >Admin Panel</router-link
+                    >
+                    <button
+                        class="button is-primary"
+                        v-if="loggedIn"
+                        @click="handleLogout"
+                    >
+                        Logout
+                    </button>
                 </div>
             </b-navbar-item>
         </template>
     </b-navbar>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+    name: 'Nav',
+    computed: {
+        ...mapGetters(['loggedIn', 'isAdmin']),
+    },
+    methods: {
+        handleLogout() {
+            this.$store.dispatch('logout')
+        },
+    },
+}
+</script>
 
 <style scoped>
 </style>

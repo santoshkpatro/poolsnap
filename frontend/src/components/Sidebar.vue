@@ -1,7 +1,12 @@
 <template>
     <b-menu>
-        <b-menu-list label="Menu">
-            <b-menu-item icon="information-outline" label="Info"></b-menu-item>
+        <b-menu-list>
+            <router-link :to="{ name: 'Overview' }">
+                <b-menu-item
+                    icon="information-outline"
+                    label="Overview"
+                ></b-menu-item>
+            </router-link>
             <b-menu-item icon="settings" :active="isActive" expanded>
                 <template #label="props">
                     Administrator
@@ -10,7 +15,9 @@
                         :icon="props.expanded ? 'menu-up' : 'menu-down'"
                     ></b-icon>
                 </template>
-                <b-menu-item icon="account" label="Users"></b-menu-item>
+                <router-link :to="{ name: 'Users' }">
+                    <b-menu-item icon="account" label="Users"></b-menu-item>
+                </router-link>
                 <b-menu-item icon="cellphone-link">
                     <template #label>
                         Devices
@@ -53,9 +60,6 @@
                 target="_blank"
                 to="/expo"
             ></b-menu-item>
-        </b-menu-list>
-        <b-menu-list label="Actions">
-            <b-menu-item label="Logout"></b-menu-item>
         </b-menu-list>
     </b-menu>
 </template>

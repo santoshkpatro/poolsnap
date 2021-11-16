@@ -1,15 +1,13 @@
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-9%2^^b)x!4vw_3h=43cj4f&y7g@3o1yeqe5swlrqce5b20hxjf'
+SECRET_KEY = 'django-insecure-9kz73$i*oh$pwl_o)+rw5ggktg_6_*o7!wj^w!@zbah4f1lrx6'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -20,7 +18,8 @@ INSTALLED_APPS = [
     'poolsnap.apps.PoolsnapConfig',
     'rest_framework',
     'corsheaders',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+
 ]
 
 MIDDLEWARE = [
@@ -32,10 +31,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'poolsnap.middlewares.AdminProtectMiddleware',
 ]
 
-ROOT_URLCONF = 'poolsnap.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -53,10 +51,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'poolsnap.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
-
-# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -64,8 +60,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -81,25 +75,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
-# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Custom User
-AUTH_USER_MODEL = 'poolsnap.User'
 
-# Rest framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
